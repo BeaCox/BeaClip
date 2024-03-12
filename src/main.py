@@ -15,6 +15,7 @@ VERSION = "V1.0.0"
 if sys.platform == "win32":
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APP_NAME)
 
+# wrapper class for clipboard monitoring
 class ClipboardMonitor(QObject):
     clipboardChanged = pyqtSignal()
 
@@ -23,6 +24,7 @@ class ClipboardMonitor(QObject):
         self.clipboard = QApplication.clipboard()
         self.clipboard.dataChanged.connect(self.onClipboardDataChanged)
 
+    # only emit the signal when the clipboard has text
     def onClipboardDataChanged(self):
         mimeData = self.clipboard.mimeData()
         if mimeData.hasText():
@@ -34,6 +36,8 @@ class ClipboardManager(QWidget):
         self.initUI()
         self.monitor = ClipboardMonitor()
         self.monitor.clipboardChanged.connect(self.addClipboardEntry)
+        # initialize the database and load the config first
+        # to make sure the database and config file are ready
         init_database()
         load_config()
         self.createTrayIcon()
@@ -122,6 +126,7 @@ class ClipboardManager(QWidget):
         for i in range(self.entry_list.count()):
             item = self.entry_list.item(i)
             data = item.data(Qt.ItemDataRole.UserRole) if item else None
+            # lowercase comparison
             if data and text.lower() in data[0].lower():
                 item.setHidden(False)
             elif item:

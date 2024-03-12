@@ -54,6 +54,7 @@ def update_entry(text, timestamp, tag):
 def delete_entry(text, timestamp, tag):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
+    # don't need to use tag in the delete query
     c.execute("DELETE FROM entries WHERE text=? AND timestamp=?", (text, timestamp))
     conn.commit()
     conn.close()
@@ -66,6 +67,7 @@ def clear_entries():
     conn.close()
 
 def delete_entry_created_before(timestamp):
+    # timestamp works as a threshold
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute("DELETE FROM entries WHERE timestamp < ?", (timestamp,))

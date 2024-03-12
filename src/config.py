@@ -76,6 +76,7 @@ def autostart_setup(enabled):
         # Windows
         import winreg
 
+        # register/unregister the app to run on system boot
         key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Run", 0, winreg.KEY_SET_VALUE)
         if enabled:
             winreg.SetValueEx(key, "BeaClip", 0, winreg.REG_SZ, f'"{app_path}"')
@@ -85,7 +86,8 @@ def autostart_setup(enabled):
             except FileNotFoundError:
                 pass
     else:
-        # Linux 和 macOS
+        # Linux and macOS
+        # create/remove a .desktop file in ~/.config/autostart
         autostart_dir = os.path.join(os.path.expanduser("~"), ".config", "autostart")
         autostart_file = os.path.join(autostart_dir, "beaclip.desktop")
 
