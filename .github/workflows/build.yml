@@ -63,6 +63,6 @@ jobs:
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
-        files: "/home/runner/work/BeaClip/BeaClip/BeaClip*, BeaClip*, BeaClip/BeaClip*"
+        files: "/home/runner/work/BeaClip/BeaClip/BeaClip*/*, BeaClip*, BeaClip/BeaClip*"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
