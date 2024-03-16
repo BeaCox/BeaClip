@@ -60,7 +60,7 @@ There are two configuration items that can be modified:
 1. Install the dependencies
 
    ```shell
-   git clone https://github.com/wytili/EtherScope.git
+   git clone https://github.com/BeaCox/BeaClip.git
    pip install -r requirements.txt
    ```
 
