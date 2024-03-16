@@ -62,9 +62,9 @@ jobs:
 
     - name: Rename Artifacts
       run: |
-        mv /home/runner/work/BeaClip/BeaClip/BeaClip-macos-latest/BeaClip* /home/runner/work/BeaClip/BeaClip/BeaClip-macos-latest/BeaClip-mac
-        mv /home/runner/work/BeaClip/BeaClip/BeaClip-ubuntu-latest/BeaClip* /home/runner/work/BeaClip/BeaClip/BeaClip-ubuntu-latest/BeaClip-linux
-        mv /home/runner/work/BeaClip/BeaClip/BeaClip-windows-latest/BeaClip* /home/runner/work/BeaClip/BeaClip/BeaClip-windows-latest/BeaClip-win.exe
+        mv /home/runner/work/BeaClip/BeaClip/BeaClip-macos-latest/BeaClip /home/runner/work/BeaClip/BeaClip/BeaClip-macos-latest/BeaClip-mac
+        mv /home/runner/work/BeaClip/BeaClip/BeaClip-ubuntu-latest/BeaClip /home/runner/work/BeaClip/BeaClip/BeaClip-ubuntu-latest/BeaClip-linux
+        mv /home/runner/work/BeaClip/BeaClip/BeaClip-windows-latest/BeaClip.exe /home/runner/work/BeaClip/BeaClip/BeaClip-windows-latest/BeaClip-win.exe
       
     - name: Create Release
       uses: softprops/action-gh-release@v1
