@@ -53,6 +53,8 @@ jobs:
     name: Create Release
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - name: Download Artifacts
@@ -61,6 +63,6 @@ jobs:
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
-        files: "*.exe dist/*.app BeaClip*"
+        files: "*.exe dist/*.app *BeaClip* dist/BeaClip*"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
